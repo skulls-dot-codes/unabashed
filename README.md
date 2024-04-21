@@ -1,3 +1,5 @@
+![unabashed](https://github.com/skulls-dot-codes/unabashed/blob/main/unabashed.png?raw=true)
+
 # unabashed
 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/skulls-dot-codes/unabashed?style=flat-square)
