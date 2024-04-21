@@ -3,7 +3,7 @@
 # unabashed
 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/skulls-dot-codes/unabashed?style=flat-square)
-![npm bundle size (scoped)](https://img.shields.io/bundlephobia/min/unabashed?style=flat-square)
+![NPM Unpacked Size](https://img.shields.io/npm/unpacked-size/unabashed?style=flat-square)
 ![GitHub Sponsors](https://img.shields.io/github/sponsors/skulls-dot-codes?style=flat-square)
 ![GitHub](https://img.shields.io/github/license/endevr-io/wsl-api?style=flat-square)
 
