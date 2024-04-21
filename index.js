@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import open, { openApp } from 'open'
 import { resolve } from 'node:path'
 import { argv, cwd } from 'node:process'

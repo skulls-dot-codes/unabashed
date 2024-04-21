@@ -1,9 +1,10 @@
 {
   "name": "unabashed",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Launch (almost) any application or browser tab from a JSON file. This is a wrapper for `sindresorhus/open`.",
+  "main": "index.js",
   "bin": {
-    "unabashed": "unabashed.js"
+    "unabashed": "bin/unabashed.js"
   },
   "type": "module",
   "scripts": {
