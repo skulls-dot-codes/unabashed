@@ -1,6 +1,9 @@
-import { readFile } from 'node:fs/promises'
+#!/usr/bin/env node
+
 import open, { openApp } from 'open'
-import { argv } from 'node:process'
+import { resolve } from 'node:path'
+import { argv, cwd } from 'node:process'
+import { readFile } from 'node:fs/promises'
 
 // If a filename is included in argv then use that filename
 argv.length > 1 ? unabashed(argv[2]) : unabashed()
@@ -14,20 +17,20 @@ async function unabashed (file = 'unabashed.json') {
 
   if (isValid(json)) {
     for (const item of json) {
-      if (item.type === 'app') openAppPath(item)
-      if (item.type === 'browser') openBrowserURLs(item)
-      if (item.type === 'file') openFilePath(item)
+      if (item.type === 'app') await openAppPath(item)
+      if (item.type === 'browser') await openBrowserURLs(item)
+      if (item.type === 'file') await openFilePath(item)
     }
   }
 }
 
 /**
- * Gets the file from the same directory as the command is ran and parses it to a JSON object
+ * Gets the file from the same directory as the command is run and parses it to a JSON object
  * @param {string} file
  * @returns {Promise<object>}
  */
 async function parseFileJSON (file) {
-  return JSON.parse(await readFile(new URL('./' + file, import.meta.url)))
+  return JSON.parse(await readFile(resolve(cwd(), './' + file)))
 }
 
 /**
@@ -65,6 +68,7 @@ async function openAppPath (item) {
  */
 async function openBrowserURLs (item) {
   for (const url in item.urls) {
+    await delay(500)
     Object.hasOwn(item, 'options') ? await open(item.urls[url], item.options) : await open(item.urls[url])
   }
 }
@@ -76,4 +80,13 @@ async function openBrowserURLs (item) {
  */
 async function openFilePath (item) {
   Object.hasOwn(item, 'options') ? await open(item.path, item.options) : await open(item.path)
+}
+
+/**
+ * Delays execution by ms
+ * @param {number} ms
+ * @returns {Promise}
+ */
+function delay (ms) {
+  return new Promise((resolve) => { setTimeout(() => resolve(), ms) })
 }
