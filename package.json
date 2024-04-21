@@ -1,0 +1,32 @@
+{
+  "name": "unabashed",
+  "version": "1.0.0",
+  "description": "Launch any application or browser tab for a project to complete your dev environment",
+  "main": "unabashed.js",
+  "bin": {
+    "unabashed": "unabashed.js"
+  },
+  "type": "module",
+  "scripts": {
+    "lint": "standard"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skulls-dot-codes/unabashed.git"
+  },
+  "author": "skulls.codes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/skulls-dot-codes/unabashed/issues"
+  },
+  "homepage": "https://github.com/skulls-dot-codes/unabashed#readme",
+  "dependencies": {
+    "open": "^10.1.0"
+  },
+  "devDependencies": {
+    "standard": "^17.1.0"
+  }
+}
