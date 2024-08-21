@@ -11,14 +11,18 @@ argv.length > 1 ? unabashed(argv[2]) : unabashed()
  * @param {?string} file
  */
 async function unabashed (file = 'unabashed.json') {
-  const json = await parseFileJSON(file)
+  try {
+    const json = await parseFileJSON(file)
 
-  if (isValid(json)) {
-    for (const item of json) {
-      if (item.type === 'app') await openAppPath(item)
-      if (item.type === 'browser') await openBrowserURLs(item)
-      if (item.type === 'file') await openFilePath(item)
+    if (isValid(json)) {
+      for (const item of json) {
+        if (item.type === 'app') await openAppPath(item)
+        if (item.type === 'browser') await openBrowserURLs(item)
+        if (item.type === 'file') await openFilePath(item)
+      }
     }
+  } catch (error) {
+    console.error('\x1b[31m%s\x1b[0m', error.message)
   }
 }
 

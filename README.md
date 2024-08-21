@@ -11,9 +11,21 @@ Launch (almost) any application or browser tab from a JSON file. This is a wrapp
 
 # Install
 
+> Make sure you have at least node v18 installed
+
+To install locally in your project:
+
 ```shell
 npm install -D unabashed
 ```
+
+To install globally to be used anywhere:
+
+```shell
+npm install -g unabashed
+```
+
+> Single file OS specific executables are not currently available since all packaging tools do not support ESM and bundling CJS breaks things. These *might* be available in the future. Use node to install locally or globally.
 
 # Usage
 
@@ -33,7 +45,7 @@ unabashed open.json
 
 # JSON
 
-The JSON file must meet certain criteria from unabashed it's dependencies. If you need help then please refer to the source code of unabashed or the `sindresorhus/open` readme.
+The JSON file must meet certain criteria from unabashed's dependencies. If you need help then please refer to the source code of unabashed or the `sindresorhus/open` readme.
 
 > Note: The JSON file **must** be an array of items to open
 
@@ -42,8 +54,8 @@ The JSON file must meet certain criteria from unabashed it's dependencies. If yo
 Open applications or run commands with the `app` type. You can pass additional arguments to open the application or run the command
 
 ```json
-...
-{
+[
+  {
     "type": "app",
     "path": "wt",
     "options": {
@@ -56,7 +68,7 @@ Open applications or run commands with the `app` type. You can pass additional a
       ]
     }
   },
-...
+]
 ```
 
 ## Browser
@@ -66,22 +78,22 @@ Open browser links in tabs with the `browser` type and an array of `urls`. If no
 > Note: this might not work for all browsers and when specifying a certain browser then the only options are `chrome`, `edge`, and `firefox`. This is a limitation of `sindresorhus/open`
 
 ```json
-...
-{
-  "type": "browser",
-  "options": {
-    "app": {
-      "name": "firefox",
-      "arguments": [
-        "-private"
-      ]
-    }
+[
+  {
+    "type": "browser",
+    "options": {
+      "app": {
+        "name": "firefox",
+        "arguments": [
+          "-private"
+        ]
+      }
+    },
+    "urls": [
+      "https://github.com/skulls-dot-codes/unabashed"
+    ]
   },
-  "urls": [
-    "https://github.com/skulls-dot-codes/unabashed"
-  ]
-},
-...
+]
 ```
 
 ## File
@@ -89,10 +101,10 @@ Open browser links in tabs with the `browser` type and an array of `urls`. If no
 Open a file with the `file` type. The file opens with whatever the default application is to view/edit it.
 
 ```json
-...
-{
-  "type": "file",
-  "path": "unabashed.png"
-},
-...
+[
+  {
+    "type": "file",
+    "path": "unabashed.png"
+  },
+]
 ```
