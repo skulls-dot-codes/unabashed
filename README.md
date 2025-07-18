@@ -53,6 +53,7 @@ The JSON file must meet certain criteria from unabashed's dependencies. If you n
 
 Open applications or run commands with the `app` type. You can pass additional arguments to open the application or run the command
 
+Example launching Laravel Homestead
 ```json
 [
   {
@@ -61,13 +62,30 @@ Open applications or run commands with the `app` type. You can pass additional a
     "options": {
       "arguments": [
         "-d",
-        "path\\to\\laravel\\homestead",
+        "path\\to\\laravel\\homestead\\in\\Windows",
         "cmd",
         "/k",
         "vagrant up && vagrant ssh"
       ]
     }
   },
+]
+```
+
+Example launching Laravel Sail
+```json
+[
+    {
+        "type": "app",
+        "path": "wt",
+        "options": {
+            "arguments": [
+                "cmd",
+                "/k",
+                "wsl --cd /path/to/project/in/linux -- ./vendor/bin/sail up"
+            ]
+        }
+    }
 ]
 ```
 
